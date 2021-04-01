@@ -14,6 +14,8 @@ export class LoanController {
     // @UseGuards(AuthGuard('jwt'))
     @Post()
     async createLoan(@Request() req) {
+      console.log('----createLoan')
+      console.log(req)
       return await this.loanService.createLoan(req.loan);
     }
 
