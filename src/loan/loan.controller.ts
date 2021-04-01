@@ -23,6 +23,7 @@ export class LoanController {
     // @UseGuards(AuthGuard('jwt'))
     @Get()
     async getAll() {
+      console.log('getAll')
       return await this.loanService.getAll();
     }
 

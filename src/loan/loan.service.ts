@@ -12,6 +12,7 @@ export class LoanService {
      * Get a list of loans
      */
     async getAll(): Promise<Loan[]> {
+        console.log(this.loanRepository);
         return await this.loanRepository.find();
      }
 
