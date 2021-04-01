@@ -1,6 +1,5 @@
 import { Controller, Request, Get, Post, UseGuards, HttpCode, Body } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { userInfo } from 'os';
 import { AuthService } from './auth/auth.service';
 import { User } from './user/user.service';
 
@@ -21,7 +20,7 @@ export class AppController {
 
   @HttpCode(303)
   @Get()
-  async welcome() {
-    return
+  welcome() {
+    return '';
   }
 }
