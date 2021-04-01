@@ -26,7 +26,12 @@ $ npm install
 ## Running the app on local
 
 ```bash
+# install dependencies
 $ npm install
+
+# set environment variables
+DATABASE_URL needs to be set to a postgres db connection string
+JWT_TOKEN needs to be set to some string. Its a secret key used for jwt token validation and should not be hardcoded on the server, but it can be anything you want it to be.
 
 # development
 $ npm run start
