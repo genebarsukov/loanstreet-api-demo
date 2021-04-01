@@ -14,10 +14,11 @@ export class AppController {
    */
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Body() user: User) {
+  // async login(@Body() user: User) {
+  async login(@Request() req) {
     console.log('login')
-    console.log(user)
-    return this.authService.login(user);
+    console.log(req.user)
+    return this.authService.login(req.user);
   }
 
   @HttpCode(303)

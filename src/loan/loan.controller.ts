@@ -13,10 +13,10 @@ export class LoanController {
      */
     // @UseGuards(AuthGuard('jwt'))
     @Post()
-    async createLoan(@Request() req) {
+    async createLoan(@Body() loan: Loan) {
       console.log('----createLoan')
-      console.log(req)
-      return await this.loanService.createLoan(req.loan);
+      console.log(loan)
+      return await this.loanService.createLoan(loan);
     }
 
     /**
