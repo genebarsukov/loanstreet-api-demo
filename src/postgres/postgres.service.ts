@@ -6,9 +6,9 @@ export class PostgresService {
     client = new Client({
         connectionString: process.env.DATABASE_URL || 'postgresql://gene@localhost/loanstreet-demo',
      //   ssl: false
-        ssl: {
-            rejectUnauthorized: false
-        }
+        // ssl: {
+        //     rejectUnauthorized: false
+        // }
     });
     connError = 'No Error'
 
