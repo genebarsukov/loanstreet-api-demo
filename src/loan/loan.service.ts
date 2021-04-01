@@ -28,8 +28,6 @@ export class LoanService {
       * @param loan loan payload
       */
     async createLoan(loan: Loan): Promise<Loan> {
-        console.log('createLoan');
-        console.log(loan);
         return await this.loanRepository.save(loan)
             .then(() => this.loanRepository.findOne(loan.id))
     }

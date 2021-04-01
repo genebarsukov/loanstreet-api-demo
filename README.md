@@ -6,6 +6,7 @@ This is a simple API with 2 routes (`/login` and `/loan`) and 2 controllers. The
 The app is hosted on Heroku. at `https://loanstreet-demo.herokuapp.com/`
 You need to add a `Host` header to your request. It should be `loanstreet-demo.herokuapp.com`
 You can also run the app on your local using the steps below and view it a `localhost:3000`
+(Sample Curl requests are below)
 
 1. Send a POST to `https://loanstreet-demo.herokuapp.com/login` with the payload `{"username": "default_user", "password": "default_pass"}`
 2. Copy the returned bearer token and add it to your request auth header: `'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsIn....'`
@@ -21,6 +22,22 @@ You can also run the app on your local using the steps below and view it a `loca
 }}
 ```
 6. You can also send a PUT and a PATCH with a partial payload. PUT replaces the object. PATCH just updates the specified object props.
+
+```
+curl -X POST https://loanstreet-demo.herokuapp.com/login -d '{"username": "default_user", "password": "default_pass"}' -H "Content-Type: application/json"
+
+curl -X GET https://loanstreet-demo.herokuapp.com/loan -H "Content-Type:application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZmF1bHRfdXNlciIsInN1YiI6MywiaWF0IjoxNjE3MzA0OTA2LCJleHAiOjE2MTczMDY3MDZ9.8Rnu-GaUBYl5ieR0M5gAxxxND2q1hRl1kaP33izvCJM"
+
+curl -X GET https://loanstreet-demo.herokuapp.com/loan/11 -H "Content-Type:application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZmF1bHRfdXNlciIsInN1YiI6MywiaWF0IjoxNjE3MzA0OTA2LCJleHAiOjE2MTczMDY3MDZ9.8Rnu-GaUBYl5ieR0M5gAxxxND2q1hRl1kaP33izvCJM" 
+
+curl -X POST https://loanstreet-demo.herokuapp.com/loan -H "Content-Type:application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZmF1bHRfdXNlciIsInN1YiI6MywiaWF0IjoxNjE3MzA0OTA2LCJleHAiOjE2MTczMDY3MDZ9.8Rnu-GaUBYl5ieR0M5gAxxxND2q1hRl1kaP33izvCJM" -d '{"amount": 990000,"interestRate": 15,"lengthMonths": 3,"monthlyPayment": 40000}'
+
+curl -X PUT https://loanstreet-demo.herokuapp.com/loan/11 -H "Content-Type:application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZmF1bHRfdXNlciIsInN1YiI6MywiaWF0IjoxNjE3MzA0OTA2LCJleHAiOjE2MTczMDY3MDZ9.8Rnu-GaUBYl5ieR0M5gAxxxND2q1hRl1kaP33izvCJM" -d '{"amount": 990000,"interestRate": 17,"lengthMonths": 12,"monthlyPayment": 69000}'
+
+curl -X PATCH https://loanstreet-demo.herokuapp.com/loan/11 -H "Content-Type:application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZmF1bHRfdXNlciIsInN1YiI6MywiaWF0IjoxNjE3MzA0OTA2LCJleHAiOjE2MTczMDY3MDZ9.8Rnu-GaUBYl5ieR0M5gAxxxND2q1hRl1kaP33izvCJM" -d '{"amount": 990000,"interestRate": 17,"lengthMonths": 3,"monthlyPayment": 69000}'
+```
+
+
 
 ```bash
 $ npm install
