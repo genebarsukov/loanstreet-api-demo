@@ -11,7 +11,7 @@ export class LoanController {
      * POST a new loan
      * @param loan loan payload
      */
-    @UseGuards(AuthGuard('jwt'))
+    // @UseGuards(AuthGuard('jwt'))
     @Post()
     async createLoan(@Body() loan: Loan) {
       return await this.loanService.createLoan(loan);
@@ -20,7 +20,7 @@ export class LoanController {
     /**
      * Get all loans
      */
-    @UseGuards(AuthGuard('jwt'))
+    // @UseGuards(AuthGuard('jwt'))
     @Get()
     async getAll() {
       return await this.loanService.getAll();
@@ -30,7 +30,7 @@ export class LoanController {
      * Get a single loan
      * @param id loan id
      */
-    @UseGuards(AuthGuard('jwt'))
+    // @UseGuards(AuthGuard('jwt'))
     @Get(':id')
     async getLoan(@Param('id') id: string) {
       let res =  await this.loanService.getLoan(parseInt(id, 10));
