@@ -1,4 +1,4 @@
-import { Body, Controller, Get, NotFoundException, Param, Patch, Post, Put, UseGuards } from '@nestjs/common';
+import { Request, Body, Controller, Get, NotFoundException, Param, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Loan } from './loan.entity';
 import { LoanService } from './loan.service';
@@ -13,8 +13,8 @@ export class LoanController {
      */
     // @UseGuards(AuthGuard('jwt'))
     @Post()
-    async createLoan(@Body() loan: Loan) {
-      return await this.loanService.createLoan(loan);
+    async createLoan(@Request() req) {
+      return await this.loanService.createLoan(req.loan);
     }
 
     /**

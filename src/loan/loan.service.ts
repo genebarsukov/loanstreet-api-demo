@@ -12,7 +12,6 @@ export class LoanService {
      * Get a list of loans
      */
     async getAll(): Promise<Loan[]> {
-        console.log(this.loanRepository);
         return await this.loanRepository.find();
      }
 
@@ -29,6 +28,7 @@ export class LoanService {
       * @param loan loan payload
       */
     async createLoan(loan: Loan): Promise<Loan> {
+        console.log(loan);
         return await this.loanRepository.save(loan)
             .then(() => this.loanRepository.findOne(loan.id))
     }
