@@ -12,7 +12,10 @@ export class LoanService {
      * Get a list of loans
      */
     async getAll(): Promise<Loan[]> {
-        return await this.loanRepository.find();
+        let loans = await this.loanRepository.find();
+        loans.sort((a, b) => a.id - b.id)
+
+        return loans
      }
 
     /**
