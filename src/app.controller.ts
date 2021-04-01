@@ -1,26 +1,27 @@
-import { Controller, Request, Get, Post, UseGuards } from '@nestjs/common';
+import { Controller, Request, Get, Post, UseGuards, HttpCode, Body } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { AppService } from './app.service';
+import { userInfo } from 'os';
 import { AuthService } from './auth/auth.service';
+import { User } from './user/user.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService, private authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
-  // @Get()
-  // async getHello(): Promise<string> {
-  //   return this.appService.getHello();
-  // }
-
+  /**
+   * Simulates a login and returns a jwt token
+   * Users are predefined in code since persisting them in db is beyond the scope of this
+   * @param user user name and password used to log in 
+   */
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Request() req) {
-    return this.authService.login(req.user);
+  async login(@Body() user: User) {
+    return this.authService.login(user);
   }
 
-  @UseGuards(AuthGuard('jwt'))
+  @HttpCode(303)
   @Get()
-  getProfile(@Request() req) {
-    return this.appService.getHello();
+  async welcome() {
+    return
   }
 }

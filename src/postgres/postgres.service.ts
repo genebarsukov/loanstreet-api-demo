@@ -1,22 +1,22 @@
 import { Injectable } from '@nestjs/common';
 const { Client } = require('pg');
 
+/**
+ * This class is currently not used
+ */
 @Injectable()
 export class PostgresService {
     client = new Client({
         connectionString: process.env.DATABASE_URL || 'postgresql://gene@localhost/loanstreet-demo',
-     //   ssl: false
-        // ssl: {
-        //     rejectUnauthorized: false
-        // }
+        ssl: {
+            rejectUnauthorized: false
+        }
     });
-    connError = 'No Error'
 
     constructor() {
         this.client.connect(err => {
             if (err) {
                 console.error('connection error', err.stack);
-                this.connError = 'CONNECTION ERROR';
             } else {
                 console.log('connected');
             }
