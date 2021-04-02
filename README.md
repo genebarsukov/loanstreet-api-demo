@@ -23,7 +23,7 @@ You can also run the app on your local using the steps below and view it a `loca
 ```
 6. You can also send a PUT and a PATCH with a partial payload. PUT replaces the object. PATCH just updates the specified object props.
 
-```
+```bash
 curl -X POST https://loanstreet-demo.herokuapp.com/login -d '{"username": "default_user", "password": "default_pass"}' -H "Content-Type: application/json"
 
 curl -X GET https://loanstreet-demo.herokuapp.com/loan -H "Content-Type:application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZmF1bHRfdXNlciIsInN1YiI6MywiaWF0IjoxNjE3MzA0OTA2LCJleHAiOjE2MTczMDY3MDZ9.8Rnu-GaUBYl5ieR0M5gAxxxND2q1hRl1kaP33izvCJM"
