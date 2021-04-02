@@ -37,22 +37,23 @@ curl -X PUT https://loanstreet-demo.herokuapp.com/loan/11 -H "Content-Type:appli
 curl -X PATCH https://loanstreet-demo.herokuapp.com/loan/11 -H "Content-Type:application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZmF1bHRfdXNlciIsInN1YiI6MywiaWF0IjoxNjE3MzA0OTA2LCJleHAiOjE2MTczMDY3MDZ9.8Rnu-GaUBYl5ieR0M5gAxxxND2q1hRl1kaP33izvCJM" -d '{"amount": 990000,"interestRate": 17,"lengthMonths": 3,"monthlyPayment": 69000}'
 ```
 
+## Running the app on a local environment
 
-
-```bash
-$ npm install
-```
-
-## Running the app on local
-
+### Install dependencies:
 ```bash
 # install dependencies
 $ npm install
+```
+### Set environment variables and disable db ssl:
+`DATABASE_URL` needs to be set to a postgres db connection string
 
-# set environment variables
-DATABASE_URL needs to be set to a postgres db connection string
-JWT_KEY needs to be set to some string. Its a secret key used for jwt token validation and should not be hardcoded on the server, but it can be anything you want it to be.
+`JWT_KEY` needs to be set to some string. Its a secret key used for jwt token validation and should not be hardcoded on the server, but it can be anything you want it to be.
 
+
+`'ssl': { rejectUnauthorized: false },` needs to be commednted out in `ormconfig.js`
+
+### Start the app locally:
+```bash
 # development
 $ npm run start
 
@@ -63,3 +64,5 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+### Use the app:
+Navigate to `http://localhost:3000` in your browser
